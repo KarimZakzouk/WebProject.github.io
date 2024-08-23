@@ -5,14 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('country-container');
             countries.forEach((country, index) => {
 
-                const countryCard = document.createElement('div');
+                
+                const countryCard = document.createElement('a');
                 countryCard.className = 'country-card';
-
+                
+                const countryDetailUrl = `details.html?code=${country.alpha3Code}`;
+                countryCard.href = countryDetailUrl;
                 countryCard.innerHTML = 
                 `
                     <img src="${country.flags.png}">
                     <h2>${country.name}</h2>
-                    <p>Population: ${country.population}</p>
+                    <p><b>Population:</b> ${country.population}</p>
                     <p><b>Region:</b> ${country.region}</p>
                     <p><b>Capital:</b> ${country.capital}</p>
                 `;
@@ -20,5 +23,4 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.appendChild(countryCard);
             });
         })
-        .catch(error => console.error('Error loading countries:', error));
 });
