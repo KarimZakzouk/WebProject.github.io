@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(countries => {
             const country = countries.find(c => c.alpha3Code === countryCode);
+            console.log(country);
             const img = document.getElementById('country-details');
             const countryImg = document.createElement('div');
             countryImg.className = 'country-img';
