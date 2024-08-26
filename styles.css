@@ -100,4 +100,53 @@ body{
     border-radius: 8px 8px 0 0;
     margin-bottom: 10px;
 }
+#back button {
+    background-color: #2b3743;
+    margin: 50px 70px;
+    padding: 10px 40px 10px 30px;
+    border: none; 
+    color: white; 
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    align-items: center;
+}
+
+#back button::before {
+    content: '←';
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#back button:hover {
+    box-shadow: 0 0px 5px 0 black;
+}
+
+#country-details {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap;
+    margin: 0 70px;
+}
+
+.country-img {
+}
+
+.country-img img {
+    margin:50px
+}
+
+.country-info {
+    color: white;
+    max-width: 50%;
+}
+
+.country-info h2 {
+    margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+s
+}
+
+
 
