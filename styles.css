@@ -46,12 +46,10 @@ body{
     background-color: #2b3743;
     border: none;
     border-radius: 10px 0px 0px 10px;
-
 }
 #search img{
     width: 20px;
     align-items: center;
-    background-color: #2b3743;    
 }
 #search input{
     padding: 10px;
@@ -68,6 +66,12 @@ body{
     border-radius: 5px; 
     background-color: #3A4D5E; 
     color: white;
+    font-size: 16px;
+
+}
+#search option{
+    padding: 10px; 
+    font-size: 16px;
 }
 #country-container{
     display: flex; 
@@ -77,12 +81,15 @@ body{
     gap: 60px;
 }
 .country-card{
+    text-decoration: none;
     background-color: #fff;
     border-radius: 2px;
     background-color: #2b3743;
     width: 300px;
     padding: 0 0 30px 0;
     cursor: pointer;
+    transition:0.3s ease-in-out;
+    border-radius: 10px;
 }
 .country-card h2{
     color: white;
@@ -100,7 +107,13 @@ body{
     border-radius: 8px 8px 0 0;
     margin-bottom: 10px;
 }
-#back button {
+.country-card:hover{
+    box-shadow: 0 0 19px 0 black;
+}
+#back{
+    padding:70px 0;
+}
+#back a {
     background-color: #2b3743;
     margin: 50px 70px;
     padding: 10px 40px 10px 30px;
@@ -109,15 +122,16 @@ body{
     cursor: pointer;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     align-items: center;
+    text-decoration: none;
 }
 
-#back button::before {
+#back a::before {
     content: '←';
     margin-right: 10px;
     font-size: 16px;
 }
 
-#back button:hover {
+#back a:hover {
     box-shadow: 0 0px 5px 0 black;
 }
 
@@ -127,9 +141,6 @@ body{
     align-items: center; 
     flex-wrap: wrap;
     margin: 0 70px;
-}
-
-.country-img {
 }
 
 .country-img img {
@@ -144,8 +155,52 @@ body{
 .country-info h2 {
     margin-bottom: 20px;
 }
-@media (max-width: 768px) {
-s
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+body.light-mode #navbar {
+    background-color: white;
+}
+
+body.light-mode #navbar h2 {
+    color: black;
+}
+
+body.light-mode #navbar button {
+    color: black;
+}
+
+body.light-mode #search {
+    background-color: white;
+}
+
+body.light-mode #search button,
+body.light-mode #search input,
+body.light-mode #search select {
+    background-color: white;
+    color: black;
+}
+body.light-mode #search img{
+    filter: invert(1);
+}
+body.light-mode #country-container .country-card {
+    background-color: white;
+}
+
+body.light-mode #country-container .country-card h2,
+body.light-mode #country-container .country-card p {
+    color: black;
+}
+
+body.light-mode #back a {
+    background-color: white;
+    color: black;
+}
+
+body.light-mode #country-details .country-info {
+    color: black;
 }
 
 

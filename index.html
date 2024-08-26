@@ -11,20 +11,23 @@
         <h2>
             What in the world?
         </h2>
-        <button>
-            🌙 Dark Mode
-        </button>
+        <button id="darkmode-toggle">🌙 Dark Mode</button>
+
     </div>
     <div id="search">
         <form action="#">
-            <button type="submit"><img src="icons/search.png"></button>
-            <input type="text" placeholder="Search for a country..." name="search">
+            <button type="submit" disabled><img src="icons/search.png"></button>
+            <input type="text" id="countrySearch" placeholder="Search for a country..." name="search">
           </form>
-        <select>
-          <option>Filter by Region</option>
-          <option>Africa</option>
-          <option>America</option>
-        </select>
+          <select id="regionSelect">
+            <option value="">Filter by Region</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+          
       </div>
     <div id="country-container">
 
