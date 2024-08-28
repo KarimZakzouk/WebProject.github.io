@@ -14,7 +14,7 @@ body{
 }
 #navbar h2{
     color: white;
-    padding: 15px;
+    padding: 20px 0;
     margin: 0 50px;
 }
 #navbar button{
@@ -25,54 +25,59 @@ body{
     color: white; 
     cursor: pointer;
 }
-#search{
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 10px; 
+#search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
     margin: 25px 50px;
     background-color: #202d36;
 }
-#search form{
-    display: flex; 
+
+#search form {
+    display: flex;
 }
-#search button{
-    height: 40px; 
-    width: 40px; 
+
+#search button {
+    height: 40px;
+    width: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0;
     background-color: #2b3743;
     border: none;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 0 0 10px;
 }
-#search img{
+
+#search img {
     width: 20px;
-    align-items: center;
 }
-#search input{
-    padding: 10px;
-    border: none; 
-    background-color: #2b3743; 
-    color: white; 
-    width: 300px;
+
+#search input {
+    width: 100%;
+    padding: 0 100px 0 0;
+    border: none;
+    background-color: #2b3743;
+    color: white;
     outline: none;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0 10px 10px 0;
 }
-#search select{
-    padding: 10px; 
-    border: none; 
-    border-radius: 5px; 
-    background-color: #3A4D5E; 
+
+#search select {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3A4D5E;
     color: white;
     font-size: 16px;
-
 }
-#search option{
-    padding: 10px; 
+
+#search option {
+    padding: 10px;
     font-size: 16px;
 }
+
 #country-container{
     display: flex; 
     justify-content: center; 
@@ -111,7 +116,7 @@ body{
     box-shadow: 0 0 19px 0 black;
 }
 #back{
-    padding:70px 0;
+    padding:50px 0;
 }
 #back a {
     background-color: #2b3743;
@@ -134,27 +139,109 @@ body{
 #back a:hover {
     box-shadow: 0 0px 5px 0 black;
 }
-
 #country-details {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    flex-wrap: wrap;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
     margin: 0 70px;
+}
+.country-img {
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .country-img img {
-    margin:50px
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .country-info {
+    display: flex;
+    flex-direction: row;
+    margin: 30px 100px;
     color: white;
-    max-width: 50%;
+    gap: 100px;
 }
 
 .country-info h2 {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
+
+.country-info p {
+    margin: 10px 0;
+}
+
+#country-name {
+    margin: 30px 100px;
+    color: white;
+}
+
+
+@media (max-width: 659px) {
+    #navbar button {
+        margin: 10px 20px;
+        align-self: flex-start;
+    }
+    #navbar h2 {
+        margin: 0 20px;
+        text-align: left;
+        font-size: 12px;
+    }
+    #country-details {
+        flex-direction: column;
+        align-items: start;
+        margin: 0 20px;
+    }
+
+    .country-img {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .country-info {
+        margin: 0 0 0 10px;
+        text-align: center;
+    }
+    #search {
+        display: flex; 
+        justify-content: start; 
+        flex-direction: column;
+        align-items: start; 
+        flex-wrap: wrap;
+    }
+
+    #search select {
+        border-radius: 5px;
+        margin: 20px 0;
+    }
+    #back{
+        padding: 50px 0;
+    }
+    #back a{
+        padding: 10px 40px 10px 30px;   
+        margin: 0px 30px;
+    }
+    #country-name{
+        text-align: start;
+        margin: 30px 0 30px 10px;
+    }
+    .country-info {
+        flex-direction: column;
+        gap: 0px;
+        text-align: left;
+    }
+    .country-info p{
+        font-size: 20px;
+        margin: 0 0 20px 0;
+    }
+}
+
+
 body.light-mode {
     background-color: white;
     color: black;

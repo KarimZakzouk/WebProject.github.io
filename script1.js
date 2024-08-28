@@ -2,16 +2,15 @@ function loadRegions(region) {
     fetch('data.json')
         .then(response => response.json())
         .then(countries => {
-
             localStorage.setItem('allCountries', JSON.stringify(countries));
             filterCountries(region, localStorage.getItem('searchTerm') || '');
-        })
+        });
 }
 
 function filterCountries(region, searchTerm) {
     const allCountries = JSON.parse(localStorage.getItem('allCountries')) || [];
-    const filteredCountries = allCountries.filter(country => 
-        (region === '' || country.region === region) &&
+    const filteredCountries = allCountries.filter(country =>
+        (!region || country.region === region) &&
         country.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -21,8 +20,7 @@ function filterCountries(region, searchTerm) {
     filteredCountries.forEach(country => {
         const countryCard = document.createElement('a');
         countryCard.className = 'country-card';
-        const countryDetailUrl = `details.html?code=${country.alpha3Code}`;
-        countryCard.href = countryDetailUrl;
+        countryCard.href = `details.html?code=${country.alpha3Code}`;
         countryCard.innerHTML = `
             <img src="${country.flags.png}" alt="${country.name} flag">
             <h2>${country.name}</h2>
@@ -35,39 +33,44 @@ function filterCountries(region, searchTerm) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    
     const savedRegion = localStorage.getItem('selectedRegion') || '';
     const savedSearchTerm = localStorage.getItem('searchTerm') || '';
+    const savedMode = localStorage.getItem('mode') || 'dark';
 
     loadRegions(savedRegion);
 
     document.getElementById('regionSelect').value = savedRegion;
     document.getElementById('countrySearch').value = savedSearchTerm;
 
-    const regionSelect = document.getElementById('regionSelect');
-    const countrySearch = document.getElementById('countrySearch');
-    const toggleButton = document.getElementById('darkmode-toggle');
     const body = document.body;
+    const toggleButton = document.getElementById('darkmode-toggle');
+
+    if (savedMode === 'light') {
+        body.classList.add('light-mode');
+        toggleButton.textContent = '🌙 Dark Mode';
+    }
 
     toggleButton.addEventListener('click', () => {
-        body.classList.toggle('light-mode');
-        
-        if (body.classList.contains('light-mode')) {
-            toggleButton.textContent = '🌙 Dark Mode';
-        } else {
-            toggleButton.textContent = '☀️ Light Mode';
-        }
+        const isLightMode = body.classList.toggle('light-mode');
+        const mode = isLightMode ? 'light' : 'dark';
+        localStorage.setItem('mode', mode);
+        toggleButton.textContent = isLightMode ? '🌙 Dark Mode' : '☀️ Light Mode';
     });
 
-    regionSelect.addEventListener('change', function() {
+    document.getElementById('regionSelect').addEventListener('change', () => {
         const selectedRegion = regionSelect.value;
         localStorage.setItem('selectedRegion', selectedRegion);
-        filterCountries(selectedRegion, localStorage.getItem('searchTerm') || '');
+        filterCountries(selectedRegion, savedSearchTerm);
     });
 
-    countrySearch.addEventListener('input', function() {
+    document.getElementById('countrySearch').addEventListener('input', () => {
         const searchCountry = countrySearch.value;
         localStorage.setItem('searchTerm', searchCountry);
-        filterCountries(localStorage.getItem('selectedRegion') || '', searchCountry);
+        filterCountries(savedRegion, searchCountry);
     });
-    
 });
