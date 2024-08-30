@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
+
     const urlParams = new URLSearchParams(window.location.search);
     const countryCode = urlParams.get('code');
 
@@ -9,16 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(countries => {
             const country = countries.find(c => c.alpha3Code === countryCode);
-            if (!country) return; // Handle case where country is not found
-
             const countryDetails = document.getElementById('country-details');
+
+            const borderCountries = country.borders?.map(borderCode => {
+                const borderCountry = countries.find(c => c.alpha3Code === borderCode);
+                return borderCountry ? `<button class="country-button" data-country="${borderCountry.alpha3Code}">${borderCountry.name}</button>` : '';
+            }).join(' ');
 
             countryDetails.innerHTML = `
                 <div class="country-img">
                     <img src="${country.flags?.png || 'default-flag.png'}">
                 </div>
                 <div>
-                    <h1 id="country-name">${country.name}</h2>
+                    <h1 id="country-name">${country.name}</h1>
                     <div class="country-info">
                         <div>
                             <p><b>Native Name:</b> ${country.nativeName || 'N/A'}</p>
@@ -33,8 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p><b>Languages:</b> ${country.languages?.map(lang => lang.name).join(', ') || 'N/A'}</p>
                         </div>
                     </div>
+                    ${borderCountries ? `
+                    <div class="border-countries">
+                        <p><b>Border Countries:</b> ${borderCountries}</p>
+                    </div>` : ''}
                 </div>
             `;
+            
+            document.querySelectorAll('.country-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const selectedCountryCode = this.getAttribute('data-country');
+                    window.location.href = `?code=${selectedCountryCode}`;
+                });
+            });
         });
 
     const body = document.body;

@@ -180,6 +180,30 @@ body{
     margin: 30px 100px;
     color: white;
 }
+.border-countries{
+    font-size: 20px;
+    color: white;
+    margin: 30px 100px;
+}
+
+.country-button {
+    background-color: #2b3743;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s ease-in-out;
+
+  }
+  
+  .country-button:hover {
+    box-shadow: 0 0 5px 0 black;
+  }
+  
 
 
 @media (max-width: 659px) {
@@ -241,54 +265,37 @@ body{
     }
 }
 
-
-body.light-mode {
+body.light-mode,
+body.light-mode #search{
     background-color: white;
     color: black;
 }
 
-body.light-mode #navbar {
-    background-color: white;
-}
-
-body.light-mode #navbar h2 {
-    color: black;
-}
-
-body.light-mode #navbar button {
-    color: black;
-}
-
-body.light-mode #search {
-    background-color: white;
-}
-
+body.light-mode #navbar,
+body.light-mode #country-container .country-card,
+body.light-mode #back a,
+body.light-mode .country-button,
 body.light-mode #search button,
 body.light-mode #search input,
-body.light-mode #search select {
-    background-color: white;
+body.light-mode #search select{
+    background-color: rgb(205, 205, 205);
     color: black;
 }
-body.light-mode #search img{
+
+body.light-mode #navbar h2,
+body.light-mode #country-container .country-card h2,
+body.light-mode #country-container .country-card p,
+body.light-mode .border-countries,
+body.light-mode #country-details .country-info,
+body.light-mode #country-name,
+body.light-mode #navbar button{
+    color: black;
+}
+
+body.light-mode #search img {
     filter: invert(1);
 }
-body.light-mode #country-container .country-card {
-    background-color: white;
-}
 
-body.light-mode #country-container .country-card h2,
-body.light-mode #country-container .country-card p {
-    color: black;
-}
-
-body.light-mode #back a {
-    background-color: white;
-    color: black;
-}
-
-body.light-mode #country-details .country-info {
-    color: black;
-}
 
 
 
