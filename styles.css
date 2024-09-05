@@ -224,6 +224,7 @@ body{
 
     .country-img {
         max-width: 100%;
+        width: 100%;
         margin-bottom: 20px;
     }
 
@@ -244,7 +245,7 @@ body{
         margin: 20px 0;
     }
     #back{
-        padding: 50px 0;
+        padding: 50px 0px 20px 0px;
     }
     #back a{
         padding: 10px 40px 10px 30px;   
