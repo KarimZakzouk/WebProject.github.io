@@ -215,7 +215,6 @@ body{
     #navbar h2 {
         margin: 0 20px;
         text-align: left;
-        font-size: 12px;
     }
     #country-details {
         flex-direction: column;
