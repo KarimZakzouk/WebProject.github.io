@@ -3,7 +3,7 @@ function loadRegions(region) {
         .then(response => response.json())
         .then(countries => {
             localStorage.setItem('allCountries', JSON.stringify(countries));
-            filterCountries(region, localStorage.getItem('searchTerm') || '');
+            filterCountries(region, localStorage.getItem('searchTerm'));
         });
 }
 
@@ -34,12 +34,8 @@ function filterCountries(region, searchTerm) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-    }
-    
-    const savedRegion = localStorage.getItem('selectedRegion') || '';
-    const savedSearchTerm = localStorage.getItem('searchTerm') || '';
+    const savedSearchTerm = localStorage.getItem('searchTerm');
+    const savedRegion = localStorage.getItem('selectedRegion');
     const savedMode = localStorage.getItem('mode') || 'dark';
 
     loadRegions(savedRegion);
@@ -63,14 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('regionSelect').addEventListener('change', () => {
-        const selectedRegion = regionSelect.value;
-        localStorage.setItem('selectedRegion', selectedRegion);
-        filterCountries(selectedRegion, savedSearchTerm);
+        localStorage.setItem('selectedRegion', regionSelect.value);
+        filterCountries(regionSelect.value, savedSearchTerm);
     });
 
     document.getElementById('countrySearch').addEventListener('input', () => {
-        const searchCountry = countrySearch.value;
-        localStorage.setItem('searchTerm', searchCountry);
-        filterCountries(savedRegion, searchCountry);
+        localStorage.setItem('searchTerm', countrySearch.value);
+        filterCountries(savedRegion, countrySearch.value);
     });
 });

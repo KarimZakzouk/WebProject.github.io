@@ -1,8 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-    }
-
     const urlParams = new URLSearchParams(window.location.search);
     const countryCode = urlParams.get('code');
 
@@ -19,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             countryDetails.innerHTML = `
                 <div class="country-img">
-                    <img src="${country.flags?.png || 'default-flag.png'}">
+                    <img src="${country.flags.png}">
                 </div>
                 <div>
                     <h1 id="country-name">${country.name}</h1>

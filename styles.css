@@ -11,6 +11,7 @@ body{
     background-color: #2b3743;
     display: flex;
     justify-content: space-between; 
+    align-items: center;
 }
 #navbar h2{
     color: white;
@@ -209,7 +210,6 @@ body{
 @media (max-width: 659px) {
     #navbar button {
         margin: 10px 20px;
-        align-self: flex-start;
     }
     #navbar h2 {
         margin: 0 20px;
@@ -262,6 +262,15 @@ body{
     .country-info p{
         font-size: 20px;
         margin: 0 0 20px 0;
+    }
+    .border-countries {
+        font-size: 20px;
+        color: white;
+        margin: 30px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; 
+        gap: 10px; 
     }
 }
 
