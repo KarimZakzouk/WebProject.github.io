@@ -9,9 +9,10 @@ function loadRegions(region) {
 
 function filterCountries(region, searchTerm) {
     const allCountries = JSON.parse(localStorage.getItem('allCountries')) || [];
+    
     const filteredCountries = allCountries.filter(country =>
         (!region || country.region === region) &&
-        country.name.toLowerCase().includes(searchTerm.toLowerCase())
+        (!searchTerm || (country.name && country.name.toLowerCase().includes(searchTerm.toLowerCase())))
     );
 
     const container = document.getElementById('country-container');
@@ -31,6 +32,10 @@ function filterCountries(region, searchTerm) {
         container.appendChild(countryCard);
     });
 }
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
